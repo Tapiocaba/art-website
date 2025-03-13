@@ -65,7 +65,7 @@ export const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
           <form onSubmit={handleSubmit} noValidate>
             <div className="email">
               <div className="email-row">
-                <label htmlFor="email">From:&nbsp;</label>
+                <label htmlFor="email">From:</label>
                 <div className={`text-input ${errors.email ? 'error' : ''}`}>
                   <input
                     type="email"
@@ -76,13 +76,15 @@ export const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
                       setEmail(e.target.value);
                       if (errors.email) setErrors({...errors, email: undefined});
                     }}
-                    placeholder="(enter your email address)..."
+                    placeholder="enter your email address..."
                   />
                 </div>
               </div>
-              <div className={`error-message ${errors.email ? 'visible' : ''}`}>
-                {errors.email}
-              </div>
+              {errors.email && (
+                <div className="error-message visible">
+                  {errors.email}
+                </div>
+              )}
             </div>
             <hr />
             

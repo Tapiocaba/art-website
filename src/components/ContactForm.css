@@ -1,0 +1,361 @@
+:root {
+    --fontSize-default: 14.5px;
+    --ui-padding-default-horizontal: 15px;
+    --ui-button-border-radius: 6px;
+    --windowRadiusLarge: 12px;
+    --windowRadiusLarge-inner: 11px;
+}
+
+.background {
+    position: fixed;
+    inset: 0;
+    background-color: var(--contact-form-overlay);
+    z-index: 9996;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    /* transition values */
+    --x1: 0.260;
+    --y1: 0.270;
+    --x2: 0.380;
+    --y2: 0.925;
+    --enter: cubic-bezier(var(--x1), var(--y1), var(--x2), var(--y2));
+    /* Reversed transition values */
+    --x1-r: calc(1 - var(--x2));
+    --y1-r: calc(1 - var(--y2));
+    --x2-r: calc(1 - var(--x1));
+    --y2-r: calc(1 - var(--y1));
+    --exit: cubic-bezier(var(--x1-r), var(--y1-r), var(--x2-r), var(--y2-r));
+    transition: opacity 0.28s var(--enter), background-color 0.3s ease;
+}
+
+.transitioning-theme * {
+    transition: all 0.5s ease;
+}
+
+.modal {
+    box-shadow: var(--contact-form-shadow, 4px 4px 40px rgba(0, 0, 0, 0.25));
+    z-index: 1000;
+    width: 30vw;
+    min-width: 410px;
+    height: 100%;
+    height: -webkit-fill-available;
+    height: fill-available;
+    max-height: 75vh;
+    border-radius: var(--windowRadiusLarge); 
+    opacity: 0;
+    transform-origin: bottom center;
+    transform: translateY(30px);
+    transition: opacity 0.28s var(--enter), transform 0.28s var(--enter);
+}
+
+.modal.mobile {
+    width: calc(var(--contact-form-vw, 1vw) * 100);
+    max-width: calc(var(--contact-form-vw, 1vw) * 100);
+    min-width: calc(var(--contact-form-vw, 1vw) * 100);
+    height: unset; 
+    max-height: unset;
+    position: fixed;
+    top: 7.5vh;
+    bottom: 7.5vh;
+}
+
+.background.active {
+    opacity: 1;
+    transition: opacity 0.28s var(--enter);
+}
+
+.modal.active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: opacity 0.28s var(--enter), transform 0.28s var(--enter);
+}
+
+.modal.active.sent {
+    transform: translateY(-30px);
+    opacity: 0;
+    transition: opacity 0.28s var(--exit), transform 0.28s var(--exit);
+}
+
+.background.sent {
+    opacity: 0;
+    transition: opacity 0.28s var(--exit);
+}
+
+.modal .modal-inner {
+    overflow: hidden;
+    padding: 10px;
+    background-color: var(--contact-form-background);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    height: -webkit-fill-available;
+    height: fill-available;
+    max-height: 75vh;
+    border-radius: var(--windowRadiusLarge-inner);
+}
+
+.modal .modal-inner form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.modal .modal-inner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    user-select: none;
+    border: var(--contact-form-border, 0);
+    border-radius: var(--windowRadiusLarge-inner);
+    transition: all 0.5s ease;
+}
+
+.modal .modal-inner .header {
+    position: relative;
+    display: grid;
+    place-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.title::after {
+    content: "Contact";
+    color: var(--contact-form-color-flat-reverse);
+}
+
+.modal .modal-inner .header .exit {
+    position: absolute;
+    right: 0;
+    line-height: 0;
+    cursor: pointer;
+}
+
+.modal .modal-inner .header .exit * {
+    pointer-events: none;
+    user-select: none;
+}
+
+.modal .modal-inner .header .exit:active {
+    opacity: 0.7;
+}
+
+.modal .modal-inner hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+    border: 0;
+    border-top: 1px solid var(--contact-form-hr);
+    margin: 10px 0;
+}
+
+.modal .modal-inner .header + hr,
+.modal .modal-inner .email + hr {
+    margin-bottom: 0;
+}
+
+.modal .modal-inner .email + hr,
+.modal .modal-inner .text-area + hr {
+    margin-top: 0;
+}
+
+.email {
+    display: flex;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: var(--fontSize-default);
+    color: var(--contact-form-placeholder-color);
+    padding: 8px 0 10px 0;
+}
+
+.text-input {
+    position: relative;
+    background: var(--contact-form-background);
+    border: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.text-input input {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: var(--fontSize-default);
+    padding: 0 10px 2px 0;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: none;
+    border-bottom: 1px solid transparent;
+    outline: none;
+    width: 100%;
+    color: var(--contact-form-color);
+    background: var(--contact-form-background);
+    transition: border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Disable browser validation styles */
+.text-input input:invalid,
+.text-area textarea:invalid,
+.text-input input:-webkit-autofill,
+.text-area textarea:-webkit-autofill {
+    box-shadow: none !important;
+    outline: none !important;
+    -webkit-box-shadow: none !important;
+    background-color: var(--contact-form-background) !important;
+}
+
+.text-area {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+}
+
+.text-area textarea {
+    color: var(--contact-form-color);
+    background: var(--contact-form-background);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: var(--fontSize-default);
+    line-height: 1.4;
+    margin: 0;
+    padding: 10px 0 12px 0;
+    height: 100%;
+    resize: none;
+    border: none;
+    border-bottom: 1px solid transparent;
+    outline: none;
+    box-shadow: none;
+    scrollbar-width: none;
+    transition: border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.text-area textarea::-webkit-scrollbar {
+    display: none;
+}
+
+.text-input input::placeholder,
+.text-area textarea::placeholder {
+    color: var(--contact-form-placeholder-color);
+    transition: color 0.3s ease-in-out;
+    opacity: 0.8;
+}
+
+.text-input.error input::placeholder,
+.text-area.error textarea::placeholder {
+    color: var(--contact-form-error-color);
+    opacity: 0.7;
+}
+
+.text-input.error input,
+.text-area.error textarea {
+    color: var(--contact-form-error-color);
+    border-bottom: 1px solid var(--contact-form-error-border);
+    transition: border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.error-message {
+    font-size: 13px;
+    color: var(--contact-form-error-color);
+    margin: 4px 0 0 42px;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.error-message.visible {
+    opacity: 0.9;
+    height: 18px;
+}
+
+.button-area {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: auto;
+    padding: 10px 0;
+}
+
+.button-area button {
+    min-width: 130px;
+    justify-content: center;
+    padding: 6.5px var(--ui-padding-default-horizontal) 7.5px 15px;
+    font-weight: 500;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 14.5px;
+    text-align: center;
+    height: 28.5px;
+    line-height: 1;
+    border-radius: var(--ui-button-border-radius);
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    user-select: none;
+    white-space: nowrap;
+}
+
+button.cancel {
+    background: var(--contact-form-button-cancel-bg);
+    color: var(--contact-form-button-cancel-color);
+}
+
+button.send {
+    position: relative;
+    background: var(--contact-form-button-send-bg);
+    color: var(--contact-form-button-send-color);
+}
+
+.caution-processing {
+    --processing-opacity: 0.08;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    background-size: 60px 60px;
+    background-image: linear-gradient( 
+        45deg, 
+        rgba(255, 255, 255, var(--processing-opacity)) 25%,
+        transparent 25%, 
+        transparent 50%, 
+        rgba(255, 255, 255, var(--processing-opacity)) 50%, 
+        rgba(255, 255, 255, var(--processing-opacity)) 75%, 
+        transparent 75%, 
+        transparent
+    );
+    animation: barberpole 1.2s linear infinite;
+    border-radius: var(--ui-button-border-radius);
+}
+
+.dark .caution-processing {
+    --processing-dark-opacity: 0.055;
+    background-image: linear-gradient( 
+        45deg, 
+        rgba(0, 0, 0, var(--processing-dark-opacity)) 25%,
+        transparent 25%, 
+        transparent 50%, 
+        rgba(0, 0, 0, var(--processing-dark-opacity)) 50%, 
+        rgba(0, 0, 0, var(--processing-dark-opacity)) 75%, 
+        transparent 75%, 
+        transparent
+    );
+}
+
+@keyframes barberpole {
+    from { background-position: 120px 60px; }
+    to   { background-position: 0 0; }
+}

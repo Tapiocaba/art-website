@@ -1,0 +1,53 @@
+/* Light theme (default) */
+:root {
+  --contact-form-color: rgba(0,0,0, 0.85);
+  --contact-form-background: #fff;
+  --contact-form-hr: rgba(0,0,0,.1);
+  --contact-form-button-cancel-bg: #e3e3e3;
+  --contact-form-button-cancel-color: #5d5d5d;
+  --contact-form-button-send-bg: #262626;
+  --contact-form-button-send-color: #fff;
+  --contact-form-placeholder-color: #999;
+  --contact-form-color-flat: rgba(255, 255, 255, 1);
+  --contact-form-color-flat-reverse: rgba(0, 0, 0, 1);
+  --contact-form-close-circle-opacity: .25;
+  --contact-form-border: 1px solid rgba(0,0,0,0);
+  --contact-form-overlay: rgba(0,0,0,.4);
+  --contact-form-shadow: 4px 4px 40px rgba(0, 0, 0, 0.25);
+  --contact-form-error-color: rgba(255, 59, 48, 0.9);
+  --contact-form-error-border: rgba(255, 59, 48, 0.4);
+  
+  /* App theme variables */
+  --app-background: #ffffff;
+  --app-text-color: #000000;
+  --app-button-bg: #262626;
+  --app-button-color: #ffffff;
+  --app-button-hover-bg: #404040;
+}
+
+/* Dark theme */
+.dark {
+  --contact-form-color: rgba(255, 255, 255, .85);
+  --contact-form-background: #202020;
+  --contact-form-hr: rgba(255, 255, 255, .1);
+  --contact-form-button-cancel-bg: rgba(255, 255, 255, .1);
+  --contact-form-button-cancel-color: rgba(255, 255, 255, .7); 
+  --contact-form-button-send-bg: rgba(255, 255, 255, .85);
+  --contact-form-button-send-color: rgba(0, 0, 0, .85);
+  --contact-form-placeholder-color: #888;
+  --contact-form-color-flat: rgba(0, 0, 0, .85);
+  --contact-form-color-flat-reverse: rgba(255, 255, 255, .85);
+  --contact-form-close-circle-opacity: .615;
+  --contact-form-border: 1px solid rgb(65, 65, 65, 1);
+  --contact-form-overlay: rgba(0,0,0,.6);
+  --contact-form-shadow: 4px 4px 40px rgba(0, 0, 0, 0.4);
+  --contact-form-error-color: rgba(255, 69, 58, 0.9);
+  --contact-form-error-border: rgba(255, 69, 58, 0.4);
+  
+  /* App theme variables */
+  --app-background: #1a1a1a;
+  --app-text-color: rgba(255, 255, 255, 0.85);
+  --app-button-bg: rgba(255, 255, 255, 0.1);
+  --app-button-color: rgba(255, 255, 255, 0.85);
+  --app-button-hover-bg: rgba(255, 255, 255, 0.2);
+}

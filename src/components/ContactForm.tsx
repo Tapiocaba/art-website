@@ -11,7 +11,19 @@ export const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
   const [message, setMessage] = useState('');
   const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const [errors, setErrors] = useState<{email?: string; message?: string}>({});
+
+  const handleExit = () => {
+    setIsSent(true);
+    setTimeout(() => {
+      onClose();
+      setIsSent(false);
+      setShowConfirmation(false);
+      setEmail('');
+      setMessage('');
+    }, 500);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,13 +49,7 @@ export const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
     await new Promise(resolve => setTimeout(resolve, 1000));
     
     setIsSending(false);
-    setIsSent(true);
-    setTimeout(() => {
-      onClose();
-      setIsSent(false);
-      setEmail('');
-      setMessage('');
-    }, 300);
+    setShowConfirmation(true);
   };
 
   if (!isOpen) return null;
@@ -52,72 +58,85 @@ export const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
     <div className={`background ${isOpen ? 'active' : ''} ${isSent ? 'sent' : ''}`}>
       <div className={`modal ${isOpen ? 'active' : ''} ${isSent ? 'sent' : ''}`}>
         <div className="modal-inner">
-          <div className="header">
-            <div className="title" />
-            <div className="exit" onClick={onClose}>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
+          {showConfirmation ? (
+            <div className="confirmation-message">
+              <div className="exit" onClick={handleExit}>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
+              </div>
+              <div className="confirmation-icon">✓</div>
+              <div className="confirmation-text">Message sent successfully!</div>
             </div>
-          </div>
-          <hr />
-          
-          <form onSubmit={handleSubmit} noValidate>
-            <div className="email">
-              <div className="email-row">
-                <label htmlFor="email">From:</label>
-                <div className={`text-input ${errors.email ? 'error' : ''}`}>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                      if (errors.email) setErrors({...errors, email: undefined});
-                    }}
-                    placeholder="enter your email address..."
-                  />
+          ) : (
+            <>
+              <div className="header">
+                <div className="title" />
+                <div className="exit" onClick={onClose}>
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" strokeWidth="1.5" />
+                  </svg>
                 </div>
               </div>
-              {errors.email && (
-                <div className="error-message visible">
-                  {errors.email}
+              <hr />
+              <form onSubmit={handleSubmit} noValidate>
+                <div className="email">
+                  <div className="email-row">
+                    <label htmlFor="email">From:</label>
+                    <div className={`text-input ${errors.email ? 'error' : ''}`}>
+                      <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        value={email}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                          if (errors.email) setErrors({...errors, email: undefined});
+                        }}
+                        placeholder="Enter your email address..."
+                      />
+                    </div>
+                  </div>
+                  {errors.email && (
+                    <div className="error-message visible">
+                      {errors.email}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-            <hr />
-            
-            <div className={`text-area ${errors.message ? 'error' : ''}`}>
-              <textarea
-                name="message"
-                value={message}
-                onChange={(e) => {
-                  setMessage(e.target.value);
-                  if (errors.message) setErrors({...errors, message: undefined});
-                }}
-                placeholder="Write your message..."
-                rows={1}
-              />
-            </div>
-            <hr />
-            
-            <div className="button-area">
-              <button type="button" className="cancel" onClick={onClose}>
-                Cancel
-              </button>
-              <button type="submit" className="send">
-                {isSending ? (
-                  <>
-                    Sending...
-                    <div className="caution-processing" />
-                  </>
-                ) : (
-                  'Send'
-                )}
-              </button>
-            </div>
-          </form>
+                <hr />
+                
+                <div className={`text-area ${errors.message ? 'error' : ''}`}>
+                  <textarea
+                    name="message"
+                    value={message}
+                    onChange={(e) => {
+                      setMessage(e.target.value);
+                      if (errors.message) setErrors({...errors, message: undefined});
+                    }}
+                    placeholder="Write your message..."
+                    rows={1}
+                  />
+                </div>
+                <hr />
+                
+                <div className="button-area">
+                  <button type="button" className="cancel" onClick={onClose}>
+                    Cancel
+                  </button>
+                  <button type="submit" className="send">
+                    {isSending ? (
+                      <>
+                        Sending...
+                        <div className="caution-processing" />
+                      </>
+                    ) : (
+                      'Send'
+                    )}
+                  </button>
+                </div>
+              </form>
+            </>
+          )}
         </div>
       </div>
     </div>

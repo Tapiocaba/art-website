@@ -1,9 +1,9 @@
 .app {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 300px 1fr; /* Increased side nav width */
-  height: 100vh; /* Fixed height */
-  overflow: hidden; /* Prevent outer scrolling */
+  grid-template-columns: 400px 1fr;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* Global transition settings */
@@ -16,8 +16,8 @@ main {
   padding: 2.5rem;
   box-sizing: border-box;
   transition: background-color var(--transition-bg), color var(--transition-color);
-  overflow-y: auto; /* Enable scrolling */
-  height: 100vh; /* Full height */
+  overflow-y: auto;
+  height: 100vh;
   background-color: white;
   color: black;
 }

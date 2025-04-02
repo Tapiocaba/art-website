@@ -3,10 +3,20 @@
   font-size: 1.75rem;
   text-decoration: none;
   transition: color var(--transition-color);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
   display: block;
   color: inherit;
   font-weight: 400;
+  padding-bottom: 0.5rem;
+  padding-top: 2rem;
+}
+
+.nav-home-subtitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: inherit;
+  margin-bottom: 2rem;
 }
 
 .nav-home-link:hover {
@@ -18,7 +28,7 @@
   font-size: 0.9rem;
   font-weight: 400;
   margin: 0;
-  margin-top: 0.25rem;
+  margin-top: 0.1rem;
   color: inherit;
 }
 

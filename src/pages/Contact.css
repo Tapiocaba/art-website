@@ -1,0 +1,20 @@
+.contact-page {
+  max-width: 800px;
+  padding: 0;
+  padding-top: 1rem;
+}
+
+.contact-content {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.contact-p {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+.contact-p a {
+  color: inherit;
+  text-decoration: underline;
+}

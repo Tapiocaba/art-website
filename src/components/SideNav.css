@@ -1,7 +1,7 @@
 .side-nav {
   height: 100vh;
   padding: 2rem;
-  padding-left: 3rem;
+  padding-left: 4rem;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -39,6 +39,6 @@
 }
 
 .nav-group:last-child {
-  margin-top: auto;
-  padding-bottom: 1rem;
+  margin-top: 2rem;
 }
+

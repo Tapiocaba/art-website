@@ -30,3 +30,9 @@ export const NavHomeLink = ({ children, to }: NavLinkProps) => (
     {children}
   </Link>
 );
+
+export const NavHomeSubtitle = () => (
+  <div className="nav-home-subtitle">
+    student, artist, engineer
+  </div>
+);

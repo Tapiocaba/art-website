@@ -1,0 +1,28 @@
+.about-page {
+  max-width: 800px;
+  padding: 0;
+  padding-top: 1rem;
+}
+
+.about-content {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.bio {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+.education-section h4 {
+  font-style: italic;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: inherit;
+  margin: 0 0 0.5rem 0;
+}
+
+.details {
+  color: inherit;
+  font-size: 0.8rem;
+}

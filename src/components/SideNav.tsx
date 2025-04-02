@@ -22,6 +22,9 @@ const SideNav = () => {
         <div className="nav-section">
           <div className="nav-group">
           <NavTitle>Selected Works</NavTitle>
+          {/* TODO: Add works */}
+          
+          {/* 
           <NavTitle>Drawings</NavTitle>
             <NavSubtitle to="/works/drawings">
               Drawings 1
@@ -38,6 +41,7 @@ const SideNav = () => {
             <NavSubtitle to="/works/film">
               Film
             </NavSubtitle>
+            */}
         </div>
 
         <div className="nav-group">

@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ContactForm } from './components/ContactForm'
 import SideNav from './components/SideNav'
+import { About } from './pages/About'
+import { Contact } from './pages/Contact'
 import './App.css'
 
 function App() {
@@ -24,10 +26,11 @@ function App() {
             <Route path="/works/photo" element={<div>Photo</div>} />
             <Route path="/works/installation" element={<div>Installation</div>} />
             <Route path="/works/film" element={<div>Film</div>} />
-            <Route path="/about" element={<div>About</div>} />
-            <Route path="/contact" element={<div>Contact</div>} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
+
         <ContactForm 
           isOpen={isContactOpen}
           onClose={() => setIsContactOpen(false)}

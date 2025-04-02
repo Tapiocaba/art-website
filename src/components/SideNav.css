@@ -1,0 +1,44 @@
+.side-nav {
+  height: 100vh;
+  padding: 2rem;
+  padding-left: 3rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Space Grotesk', sans-serif;
+  transition: background-color var(--transition-bg), color var(--transition-color);
+  position: sticky;
+  top: 0;
+  justify-content: space-between;
+}
+
+.nav-content {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: calc(100vh - 7rem);
+}
+
+.nav-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding-top: 1rem;
+}
+
+:root.dark .side-nav {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.nav-group:last-child {
+  margin-top: auto;
+  padding-bottom: 1rem;
+}

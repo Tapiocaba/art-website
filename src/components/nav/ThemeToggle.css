@@ -1,0 +1,59 @@
+.theme-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.theme-toggle:hover {
+  opacity: 0.7;
+}
+
+.theme-toggle-icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.icon {
+  font-size: 20px !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform var(--transition-bg), opacity var(--transition-bg), color var(--transition-color);
+  color: inherit;
+}
+
+.sun {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
+.moon {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+:root:not(.dark) .sun {
+  opacity: 1;
+  transform: rotate(0);
+}
+
+:root.dark .moon {
+  opacity: 1;
+  transform: rotate(0);
+}
+
+/* Faster text color transition */
+.side-nav, .nav-subtitle, .nav-title, .nav-title-link, .nav-home-link {
+  transition: color 0.2s ease;
+}
+
+/* Keep background transition at original speed */
+.side-nav {
+  transition: background-color 0.3s ease, color 0.2s ease;
+}

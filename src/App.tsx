@@ -1,34 +1,39 @@
 import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ContactForm } from './components/ContactForm'
+import SideNav from './components/SideNav'
 import './App.css'
 
 function App() {
   const [isContactOpen, setIsContactOpen] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(false)
 
-  // Update theme class when dark mode changes
+  // Dark/light mode
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDarkMode);
   }, [isDarkMode]);
 
   return (
-    <div className="app">
-      <header>
-        <h1>Art Website</h1>
-        <p>Welcome to my art website</p>
-        <button onClick={() => setIsContactOpen(true)}>Contact Me</button>
-        <button onClick={() => setIsDarkMode(!isDarkMode)}>
-          {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-        </button>
-      </header>
-      <main>
-      </main>
-
-      <ContactForm 
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
-    </div>
+    <Router>
+      <div className="app">
+        <SideNav />
+        <main>
+          <Routes>
+            <Route path="/" element={<div>Home Page</div>} />
+            <Route path="/works/drawings" element={<div>Drawings</div>} />
+            <Route path="/works/photo" element={<div>Photo</div>} />
+            <Route path="/works/installation" element={<div>Installation</div>} />
+            <Route path="/works/film" element={<div>Film</div>} />
+            <Route path="/about" element={<div>About</div>} />
+            <Route path="/contact" element={<div>Contact</div>} />
+          </Routes>
+        </main>
+        <ContactForm 
+          isOpen={isContactOpen}
+          onClose={() => setIsContactOpen(false)}
+        />
+      </div>
+    </Router>
   )
 }
 

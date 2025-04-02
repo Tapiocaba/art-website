@@ -1,34 +1,30 @@
 .app {
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 300px 1fr; /* Increased side nav width */
+  height: 100vh; /* Fixed height */
+  overflow: hidden; /* Prevent outer scrolling */
 }
 
-header {
-  margin-bottom: 2rem;
+/* Global transition settings */
+:root {
+  --transition-color: 0.2s ease;
+  --transition-bg: 0.2s ease;
 }
 
-header button {
-  margin: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background-color: var(--app-button-bg);
-  color: var(--app-button-color);
-  cursor: pointer;
-  transition: all 0.25s ease;
+main {
+  padding: 2.5rem;
+  box-sizing: border-box;
+  transition: background-color var(--transition-bg), color var(--transition-color);
+  overflow-y: auto; /* Enable scrolling */
+  height: 100vh; /* Full height */
+  background-color: white;
+  color: black;
 }
 
-header button:hover {
-  background-color: var(--app-button-hover-bg);
-  transform: translateY(-1px);
+:root.dark main {
+  background-color: #1a1a1a;
+  color: white;
 }
 
-header button:active {
-  transform: translateY(0);
-}
+

@@ -3,7 +3,7 @@ lisalin.art tentatively
 
 TLDR; Lisa didn't want to pay for cargo.site and the domain already costs $40 a year so she codes something to deploy for free <3
 
-## Local Development
+## Running Locally (for your convenience to steal :))
 
 ### Prerequisites
 - Node.js (v16 or higher)
@@ -25,7 +25,7 @@ npm run dev
 http://localhost:5173
 ```
 
-### Available Scripts
+### Scripts
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build locally

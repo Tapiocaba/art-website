@@ -1,0 +1,66 @@
+.nav-home-link {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.75rem;
+  text-decoration: none;
+  transition: color var(--transition-color);
+  margin-bottom: 1.5rem;
+  display: block;
+  color: inherit;
+  font-weight: 400;
+}
+
+.nav-home-link:hover {
+  opacity: 0.8;
+}
+
+.nav-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 0;
+  margin-top: 0.25rem;
+  color: inherit;
+}
+
+.nav-subtitle {
+  font-family: 'Space Grotesk', sans-serif;
+  text-decoration: none;
+  color: #666;
+  font-size: 0.8rem;
+  transition: color var(--transition-color);
+  padding-left: 1rem;
+  display: block;
+}
+
+.nav-subtitle:hover {
+  color: black;
+}
+
+.nav-title-link {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color var(--transition-color);
+  display: block;
+  color: inherit;
+  font-weight: 400;
+}
+
+.nav-title-link:hover {
+  opacity: 0.8;
+}
+
+.nav-copyright {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  color: #666;
+}
+
+/* Dark mode styles */
+:root.dark .nav-subtitle {
+  color: #999;
+}
+
+:root.dark .nav-subtitle:hover {
+  color: white;
+}

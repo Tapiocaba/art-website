@@ -1,4 +1,4 @@
-import { NavTitle, NavSubtitle, NavTitleLink, NavHomeLink } from './nav/NavComponents';
+import { NavTitle, NavTitleLink, NavHomeLink } from './nav/NavComponents';
 import { ThemeToggle } from './nav/ThemeToggle';
 import { useEffect, useState } from 'react';
 import './SideNav.css';

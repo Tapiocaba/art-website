@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ContactForm } from './components/ContactForm'
 import SideNav from './components/SideNav'
@@ -8,12 +8,6 @@ import './App.css'
 
 function App() {
   const [isContactOpen, setIsContactOpen] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(false)
-
-  // Dark/light mode
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', isDarkMode);
-  }, [isDarkMode]);
 
   return (
     <Router>

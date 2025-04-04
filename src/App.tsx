@@ -4,6 +4,7 @@ import { ContactForm } from './components/ContactForm'
 import SideNav from './components/SideNav'
 import { About } from './pages/About'
 import { Contact } from './pages/Contact'
+import { ImageTest } from './components/ImageTest'
 import './App.css'
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/works/film" element={<div>Film</div>} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/test" element={<ImageTest />} />
           </Routes>
         </main>
 

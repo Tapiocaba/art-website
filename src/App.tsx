@@ -5,6 +5,7 @@ import SideNav from './components/SideNav'
 import { About } from './pages/About'
 import { Contact } from './pages/Contact'
 import { ImageTest } from './components/ImageTest'
+import { Analytics } from "@vercel/analytics/react"
 import './App.css'
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           isOpen={isContactOpen}
           onClose={() => setIsContactOpen(false)}
         />
+        <Analytics />
       </div>
     </Router>
   )

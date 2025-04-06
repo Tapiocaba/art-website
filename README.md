@@ -29,3 +29,6 @@ http://localhost:5173
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build locally
+
+### Credits
+- Favicon: [Koi fish icons created by muh zakaria - Flaticon](https://www.flaticon.com/free-icons/koi-fish)
